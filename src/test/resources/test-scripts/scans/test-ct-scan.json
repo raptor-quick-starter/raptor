@@ -1,0 +1,37 @@
+{
+  "testCaseConfig": {
+    "testName": "Test Ct Scan",
+    "proxy": false,
+    "browser": "Chrome"
+  },
+  "testSteps": [
+    {
+      "stepName": "navigate to url",
+      "action": "navigate",
+      "time": 2000,
+      "locator": "",
+      "url": "https://www.alodokter.com/"
+    },
+    {
+      "stepName": "click Cari Dokter",
+      "action": "click",
+      "locator": "anchorLocator"
+    },
+    {
+      "stepName": "click city scan",
+      "action": "click",
+      "locator": "cityScan"
+    },
+    {
+      "stepName": "click Doktor",
+      "action": "click",
+      "locator": "document.querySelector(\"#elCardList > slider-tab-menu\").shadowRoot.querySelector(\"#dokter\")"
+    },
+    {
+      "stepName": "input value",
+      "action": "input",
+      "locator": "document.querySelector(\"#filterProcedure\").shadowRoot.querySelector(\"#inputFilter\")",
+      "inputValue": "test"
+    }
+  ]
+}
