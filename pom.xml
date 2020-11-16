@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.raptor.suite</groupId>
 	<artifactId>raptor-quick-start</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>DBA</name>
 	<description>Project to quickly automate front end apps with the help of Raptor</description>
 
@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>com.github.raptor-test</groupId>
 			<artifactId>raptor-test</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 
