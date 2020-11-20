@@ -54,19 +54,33 @@ Steps to add Selenium grid :
 1) add these configurations to application.properties file and then read them in the test cases
 
 app.isGridDisabled=true/false
+
 app.gridNodeurl=https://{yourteamname}:{yourteamtoken}@seleniumgrid.abc.def:{port}/wd/hub
+
 app.baseUrl=https://www.abc.com/
+
 app.proxyUrl=http://proxy.abc.def.net:{port}
+
 app.relativeTestscriptPath=src/test/resources/test-scripts/
+
 app.relativescriptfailureScreenPath=target/surefire-reports/screenshot/error-
+
 quitBrowserAfterTest=true
+
 screenShotOnSuccess=false
+
 app.defaulActionTime = 0
+
 app.defaultWaitForOptionalSteps = 10
+
 app.defaultTimeOut = 20
+
 app.defaultBrowser = Chrome
+
 app.browserVesrion = 85
+
 chromeDriverPath =src/test/resources/drivers/chromedriver5
+
 edgeDriverPath =
 ieDriverPath =
 
