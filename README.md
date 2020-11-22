@@ -23,10 +23,10 @@ As an engineer, a product manager, a development lead, I would always want every
 
 In the Testing Trophy, there are 4 types of tests.
 
-End to End: A helper robot that behaves like a user to click around the app and verify that it functions correctly. Sometimes called "functional testing" or e2e.
-Integration: Verify that several units work together in harmony.
-Unit: Verify that individual, isolated parts work as expected.
-Static: Catch typos and type errors as you write the code.
+1) End to End: A helper robot that behaves like a user to click around the app and verify that it functions correctly. Sometimes called "functional testing" or e2e.
+2) Integration: Verify that several units work together in harmony.
+3) Unit: Verify that individual, isolated parts work as expected.
+4) Static: Catch typos and type errors as you write the code.
 
 The biggest challenge so far is writing an E2E test for custom webcompoents (Polymer, Lit-html) having shadow DOM.
 
@@ -73,7 +73,7 @@ One sample test script of Raptor
 }
 
 
-***** Detailed explanation of all the fields in test json scripts
+**Detailed explanation of all the fields in test json scripts**
 
 1) **stepName**	Any string that will clearly explain the step which is currently being executed	
 2	**action**	navigate, click, scroll, clickByText, input, sendKeys, expect	
@@ -102,9 +102,8 @@ optionalStep is very useful when we are not sure if we will get that screen alto
 
 Raptor can also be extended to selenium grid and Jenkins to trigger it via Job and send notification on success/failures :
 
-Steps to add Selenium grid :
+Few handy properties: add these configurations to application.properties if you need to update them
 
-1) add these configurations to application.properties if you need to update them
 
 app.isGridDisabled=true/false
 
