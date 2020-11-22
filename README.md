@@ -1,3 +1,20 @@
+# Prerequisite
+
+1) Java 8
+2) maven
+3) IDE (IntelliJ IDEA/Eclipse)
+4) Webdriver(Mac/Windows/Linux)
+
+Steps to use **raptor-quick-starter**
+
+1) Clone https://github.com/raptor-quick-starter/raptor.git
+2) Download selenium webdriver for the OS and browser (Chrome in this case) and keep it in "src/test/resources/drivers/" directory
+3) Add/Update in application-test.properties file. Varaible chromeDriverPath =src/test/resources/drivers/chromedriver5 (.exe in case of windows)
+4) Would like to run on selenium grid? Add/Update two variable 
+app.isGridDisabled=false
+app.gridNodeurl=https://Abc@seleniumgrid.net:443/wd/hub
+5) Configure a job in jenkins for running this continously.
+
 # raptor-quick-starter
 
 An end-to-end test is a test that exercises an aspect of the system within the context of the system as a whole.
@@ -13,80 +30,12 @@ Static: Catch typos and type errors as you write the code.
 
 The biggest challenge so far is writing an E2E test for custom webcompoents (Polymer, Lit-html) having shadow DOM.
 
-**Raptor-tests** has capability to easily test webcomponents just bu configuring few steps in a test script.
+**Raptor-tests** has capability to easily test webcomponents just by configuring few steps in a test script.
 
-End to end test cases are nothing but a journey of login, few clicks, some inputs, navigations, some expected value of headings and finally logout.
+End to end test cases are nothing but a journey of login, few clicks, some inputs, navigations, some expected values and finally logout.
 
 One sample test script of Raptor
 
-
-***** Detailed explanation of all the fields in test json scripts
-
-1) **stepName**	Any string that will clearly explain the step which is currently being executed	
-2	**action**	navigate, click, scroll, clickByText, input, sendKeys, expect	
-3)	**time**	1000, 2000, 3000, 4000, Any value in milliseconds that is required to wait for next action before current action	
-4)	**locator**	
-document.querySelector("#screen-state").shadowRoot.querySelector("#form > form > button"),
-login.submit.button
-
-5)	**optionalLocator**	
-document.querySelector("#screen-state").shadowRoot.querySelector("#form > form > button"),
-login.submit.button
-OptionalLocator is very useful when we are not sure of next possible button out two possibilities. One may come or second may come still test should pass
-
-eg: while doing an action we may get one screen or we may get another screen. so it will be able to handle this scenario,
-
-6)	**url**	https://www.abc.com/,
-7)	**elementTextToFind**	"Mri Doctor" , Any text that we want to check if exist (with action clickByText) and click	
-8)	**value**	2000,- 2000 (with action scroll),	
-9)	**inputValue**	"Any String" (with action input),	
-10	**optionalStep**	true, false, empty	
-optionalStep is very useful when we are not sure if we will get that screen altogether or not, eg :
-
-11	**expectedText**	"Doctor" Any text that we want to check if exist or not	
-12	**sendKeys**
-"Any value"	send keys is very helpful when we want to trigger on-blur option after entering values so that a disabled button will get enable before clicking it
-
-Raptor can also be extended to selenium grid and Jenkins to trigger it via Job and send notification on success/failures :
-
-Steps to add Selenium grid :
-
-1) add these configurations to application.properties file and then read them in the test cases
-
-app.isGridDisabled=true/false
-
-app.gridNodeurl=https://{yourteamname}:{yourteamtoken}@seleniumgrid.abc.def:{port}/wd/hub
-
-app.baseUrl=https://www.abc.com/
-
-app.proxyUrl=http://proxy.abc.def.net:{port}
-
-app.relativeTestscriptPath=src/test/resources/test-scripts/
-
-app.relativescriptfailureScreenPath=target/surefire-reports/screenshot/error-
-
-quitBrowserAfterTest=true
-
-screenShotOnSuccess=false
-
-app.defaulActionTime = 0
-
-app.defaultWaitForOptionalSteps = 10
-
-app.defaultTimeOut = 20
-
-app.defaultBrowser = Chrome
-
-app.browserVesrion = 85
-
-chromeDriverPath =src/test/resources/drivers/chromedriver5
-
-edgeDriverPath =
-ieDriverPath =
-
-One Sample test script:
-
-  
 {
   "testCaseConfig": {
     "testName": "Test Mri scan",
@@ -122,3 +71,73 @@ One Sample test script:
     }
   ]
 }
+
+
+***** Detailed explanation of all the fields in test json scripts
+
+1) **stepName**	Any string that will clearly explain the step which is currently being executed	
+2	**action**	navigate, click, scroll, clickByText, input, sendKeys, expect	
+3)	**time**	1000, 2000, 3000, 4000, Any value in milliseconds that is required to wait for next action before current action	
+4)	**locator**	
+document.querySelector("#screen-state").shadowRoot.querySelector("#form > form > button"),
+login.submit.button
+
+5)	**optionalLocator**	
+document.querySelector("#screen-state").shadowRoot.querySelector("#form > form > button"),
+login.submit.button
+OptionalLocator is very useful when we are not sure of next possible button out two possibilities. One may come or second may come still test should pass
+
+eg: while doing an action we may get one screen or we may get another screen. so it will be able to handle this scenario,
+
+6)	**url**	https://www.abc.com/,
+7)	**elementTextToFind**	"Mri Doctor" , Any text that we want to check if exist (with action clickByText) and click	
+8)	**value**	2000,- 2000 (with action scroll),	
+9)	**inputValue**	"Any String" (with action input),	
+10	**optionalStep**	true, false, empty	
+optionalStep is very useful when we are not sure if we will get that screen altogether or not, eg :
+
+11	**expectedText**	"Doctor" Any text that we want to check if exist or not	
+12	**sendKeys**
+"Any value"	send keys is very helpful when we want to trigger on-blur option after entering values so that a disabled button will get enable before clicking it
+
+Raptor can also be extended to selenium grid and Jenkins to trigger it via Job and send notification on success/failures :
+
+Steps to add Selenium grid :
+
+1) add these configurations to application.properties if you need to update them
+
+app.isGridDisabled=true/false
+
+app.gridNodeurl=https://{yourteamname}:{yourteamtoken}@seleniumgrid.abc.def:{port}/wd/hub
+
+app.baseUrl=https://www.abc.com/
+
+app.proxyUrl=http://proxy.abc.def.net:{port}
+
+app.relativeTestscriptPath=src/test/resources/test-scripts/
+
+app.relativescriptfailureScreenPath=target/surefire-reports/screenshot/error-
+
+quitBrowserAfterTest=true
+
+screenShotOnSuccess=false
+
+app.defaulActionTime = 0
+
+app.defaultWaitForOptionalSteps = 10
+
+app.defaultTimeOut = 20
+
+app.defaultBrowser = Chrome
+
+app.browserVesrion = 85
+
+chromeDriverPath =src/test/resources/drivers/chromedriver5
+
+edgeDriverPath =
+ieDriverPath =
+
+One Sample test script:
+
+  
+
